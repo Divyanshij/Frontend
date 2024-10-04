@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF_8">
+    <meta name="viewport" content="width=device_width, initial_scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384_QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="C:\Tailor_Resume_project\Frontend\CSS\forms.css">
+    <title>Home Page</title>
+</head>
+<body>  
+  <div class="container">
+    <div class="row">
+      <div class="col_md_6">
+
+      </div>
+      <div class="col_md_6 main">
+        <form action="/" method="POST">
+          <h2>Resume Builder</h2>
+          <input type="text" id="fullname" name="fullname" placeholder="Full Name" required><br> 
+          <input type="email" id="email" name="email" placeholder="Email" required><br>
+          <input type="number" id="phone" name="phone" placeholder="Phone Number" required><br>
+          <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL"><br>
+          <input type="url" id="github" name="github" placeholder="GitHub Link" required><br>
+          <input type="url" id="portfolio" name="portfolio" placeholder="Portfolio Website" ><br>
+          <h4>Summary</h4>
+          <textarea id="summary"  id="summary" name="summary" placeholder="Summary" text_align="center" word_wrap="break_word" limit_characters="100" width="100%" aria_expanded="true" rows="4" cols="50"required></textarea><br>
+          <h4>Work Experience</h4>
+          <input type="text" id="company" name="company" placeholder="Name of Company" ><br>
+          <input type="text" id="location" name="location" placeholder="Location of the company"><br>
+          <input type="date" id="year_of_joining_company" name="year_of_joining_company" placeholder="Year of joining"><br>
+          <input type="date" id="year_of_leaving_company" name="year_of_leaving_company" placeholder="Year of leaving"><br>   
+          <input type="text" id="role" name="role" placeholder="Role" ><br>
+            <h4>Education</h4>
+          <input type="text" id="degree" name="degree" placeholder="Degree" required  ><br>
+          <input type="text" id="institute" name="institute" placeholder="Institute" required><br>
+          <input type="date" id="year_of_passing_degree" name="year_of_passing_degree" placeholder="Year of passing" required><br>
+          <input type="number" id="percentage" name="percentage" placeholder="Percentage" required><br>
+          <h4>Project</h4>
+          <input type="text" id="project" name="project" placeholder="Project"><br>
+          <textarea id="description" name="description" placeholder="Description" text_align="center" word_wrap="break_word" limit_characters="100" width="100%" aria_expanded="true" rows="4" cols="50"required></textarea><br>
+          <input type="text" id="role_in_project" name="role_in_project" placeholder="Role"><br>
+          <input type="date" id="duration_of_project" name="duration_of_project" placeholder="Duration"><br>
+          <h4>Certification</h4>
+          <input type="text" id="certification_name" name="certification_name" placeholder="Certification"><br>
+          <input type="text" id="location_of_certification" name="location_of_certification" placeholder="Location"><br>
+          <input type="date" id="year_of_completion_of_certification" name="year_of_completion_of_certification" placeholder="Year of completion"><br>
+          <h4>Skills</h4>
+          <input type="text" id="skill" name="skill" placeholder="Skills" required><br>
+          <h4>Language</h4>
+          <input type="text" id="language" name="language" placeholder="Language" required><br>
+          <button type="submit" id="submit_button">Submit</button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
