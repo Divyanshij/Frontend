@@ -1,6 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require("mongoose");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
 const app = express();
 
 // Middleware
@@ -11,7 +11,8 @@ app.use(express.urlencoded({ extended: true }));
 // MongoDB connection
 mongoose.connect("mongodb://localhost:27017/database" )
 app.use(bodyParser.urlencoded({ extended: true }));
-var db = mongoose.connection;
+app.use(bodyParser.json());
+const db = mongoose.connection;
 
 // Error handling for MongoDB connection
 db.on("error", (err) => {
@@ -22,8 +23,9 @@ db.once("open", () => {
     console.log("Connected to MongoDB");
 });
 
+
 // Define a schema and model for users
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     phone: String,
@@ -52,21 +54,13 @@ var userSchema = new mongoose.Schema({
 });
 
 
-//var users = mongoose.model("User", userSchema);
-db.collection("User").insertOne({
-    name: "John Doe",
-    email: "john.doe@example.com",
-    phone: "1234567890",
-    linkedin: "linkedin.com/in/johndoe",
-    github: "github.com/johndoe",
-    portfolio: "johndoe.com",
-    summary: "I am a software developer.",
-    company: "Example Company",}
-)
+const User = mongoose.model("User", userSchema);
+
 // POST request handler
-app.post('/', (req, res) => {
+app.post('/submit', async(req, res) => {
+    try{
     console.log("Request body:", req.body);
-    var userData = new User({
+    const userData = new User({
         name: req.body.fullname,
         email: req.body.email,
         phone: req.body.phone,
@@ -94,22 +88,19 @@ app.post('/', (req, res) => {
         language: req.body.language
     });
 
-    userData.save((err) => {
-        if (err) {
-            console.error("Error inserting record:", err);
-            return res.status(500).send("There was an error with your request.");
-        }
-        console.log("Record inserted successfully");
-        return res.redirect('/forms.html');
-    });
+    await userData.save();
+    console.log("Record inserted successfully");
+    return res.redirect('/forms.html');
+    }
+catch (err) {
+    console.error("Error inserting record:", err);
+        return res.status(500).send("There was an error with your request.");
+    }
 });
 
 // GET request handler
 app.get('/', (req, res) => {
-    res.set({
-        "Allow-access-Allow-Origin": '*'
-    });
-    return res.redirect('/forms.html');
+    res.sendFile(__dirname + '/forms.html');
 });
 
 // Start server once on port 3000
