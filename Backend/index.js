@@ -61,7 +61,8 @@ db.collection("User").insertOne({
     github: "github.com/johndoe",
     portfolio: "johndoe.com",
     summary: "I am a software developer.",
-    company: "Example Company",})
+    company: "Example Company",}
+)
 // POST request handler
 app.post('/', (req, res) => {
     console.log("Request body:", req.body);
